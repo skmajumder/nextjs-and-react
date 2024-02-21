@@ -1,7 +1,7 @@
 function page() {
   return (
     <main>
-      <h1>Next JS is Awesome</h1>
+      <h1>NextJS is Awesome</h1>
     </main>
   );
 }
