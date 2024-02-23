@@ -1,24 +1,35 @@
+import { useState } from "react";
 import NewPost from "../NewPost/NewPost";
 import Post from "../Post/Post";
 
 import styles from "./PostsList.module.css";
 
-const names = ["Shuvo", "SK Majumder"];
+function PostsList() {
+  const [postBody, setPostBody] = useState("");
+  const [authorName, setAuthorName] = useState("");
 
-const PostsList = () => {
-  const chosenName = Math.random() > 0.5 ? names[0] : names[1];
+  const bodyChangeHandler = (e) => {
+    setPostBody(e.target.value);
+  };
+
+  const authorChangeHandler = (e) => {
+    setAuthorName(e.target.value);
+  };
 
   return (
     <>
-      <NewPost />
+      <NewPost
+        postBody={postBody}
+        authorName={authorName}
+        onBodyChange={bodyChangeHandler}
+        onAuthorChange={authorChangeHandler}
+      />
       <ul className={styles.posts}>
-        <Post author={chosenName} body="React JS is awesome" />
-        <Post author={chosenName} body="React JS is awesome" />
-        <Post author={chosenName} body="React JS is awesome" />
-        <Post author={chosenName} body="React JS is awesome" />
+        <Post author={authorName} body={postBody} />
+        <Post author="John Deo" body="React JS is awesome" />
       </ul>
     </>
   );
-};
+}
 
 export default PostsList;
